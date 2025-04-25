@@ -27,7 +27,7 @@ def get_genes_list(in_annotation, format="genbank"):
                     elif 'product' in feat.qualifier:
                         genes.append(feat.qualifiers['product'][0])
                     else:
-                         sys.exit(f"Unable to {feat}")
+                         sys.exit(f"Unable to assign {feat}")
                     #genes.append([feat.qualifiers['gene'], feat.location])
     
     elif format == "gff":

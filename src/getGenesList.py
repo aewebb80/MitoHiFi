@@ -22,7 +22,12 @@ def get_genes_list(in_annotation, format="genbank"):
                     genes.append(feat.qualifiers['product'][0])
                     #genes.append([feat.qualifiers['product'], feat.location])
                 elif feat.type == "CDS":
-                    genes.append(feat.qualifiers['gene'][0])
+                    if 'gene' in feat.qualifier:
+                        genes.append(feat.qualifiers['gene'][0])
+                    elif 'product' in feat.qualifier:
+                        genes.append(feat.qualifiers['product'][0])
+                    else:
+                         sys.exit(f"Unable to {feat}")
                     #genes.append([feat.qualifiers['gene'], feat.location])
     
     elif format == "gff":
